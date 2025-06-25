@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>معلومات جهازك المتكاملة</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body dir="rtl">
+  <div class="container">
+    <h1>🔍 كل معلومات جهازك</h1>
+    <div id="info"></div>
+    <div class="buttons">
+      <button onclick="updateInfo()">🔄 تحديث</button>
+      <button onclick="vibrateDevice()">📳 اهتزاز</button>
+      <button onclick="shareInfo()">📤 إرسال</button>
+      <button onclick="getLocation()">📍 الموقع</button>
+      <button onclick="downloadReport()">📄 تحميل تقرير</button>
+      <input type="file" accept="image/*" onchange="handleImageUpload(event)" />
+    </div>
+    <div id="map" style="height:300px;margin-top:10px;"></div>
+    <img id="preview" style="max-width:100%;margin-top:10px;display:none;" />
+    <p id="fps"></p>
+    <p id="clock"></p>
+  </div>
+  <script src="script.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</body>
+</html>
