@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🧠 كل شيء عن جهازك</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body dir="rtl">
+  <audio id="click-sound" src="click.mp3" preload="auto"></audio>
+
+  <div class="container animate-fade-in">
+    <h1 class="glow">🔎 معلومات جهازك بالكامل</h1>
+    <div id="info" class="info-card"></div>
+
+    <div class="buttons">
+      <button onclick="playClick(); updateInfo()">🔄 تحديث</button>
+      <button onclick="playClick(); vibrateDevice()">📳 اهتزاز</button>
+      <button onclick="playClick(); shareInfo()">📤 إرسال</button>
+      <button onclick="playClick(); getLocation()">📍 الموقع</button>
+      <button onclick="playClick(); downloadReport()">📄 تحميل</button>
+    </div>
+
+    <div id="map" style="height: 300px; margin-top: 20px;"></div>
+    <p id="fps"></p>
+    <p id="clock"></p>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+</body>
+</html>
