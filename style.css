@@ -1,6 +1,6 @@
 body {
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(to bottom, #141e30, #243b55);
+  background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
   color: white;
   display: flex;
   justify-content: center;
@@ -17,12 +17,14 @@ body {
   box-shadow: 0 0 20px white;
 }
 
-input[type="file"] {
+button {
   margin-top: 20px;
-  padding: 10px;
-  border-radius: 10px;
-  background: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  background: #00c6ff;
   color: black;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
 }
 
